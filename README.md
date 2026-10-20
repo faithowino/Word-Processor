@@ -46,4 +46,149 @@ WordPress publishing integration
 ![State Diagram](state-diagram.png)
 
 
+## Technologies
+
+### Frontend
+
+- React 19
+- TypeScript
+- Vite
+- React Router
+- Yoopta Editor and Yoopta UI
+- Slate
+- Yjs and `y-websocket` for collaboration support
+- `lucide-react` and `react-icons` for icons
+
+### Backend and development tools
+
+- Node.js
+- Express 5
+- CORS
+- Nodemon for backend development
+- Vitest for automated tests
+- npm workspaces are not used; the root, `backend`, and `word-processor`
+  directories each have their own dependency manifest
+
+The API stores local account and document data in
+[`backend/accounts.json`](./backend/accounts.json). This is suitable for local
+development only and is not a production database.
+
+## Prerequisites
+
+- Node.js 20 or newer
+- npm
+- A modern web browser
+
+## Installation
+
+Clone the repository and install dependencies for each Node.js project:
+
+```bash
+git clone https://github.com/faithowino/Word-Processor.git
+cd Word-Processor
+
+npm install
+cd backend
+npm install
+cd ../word-processor
+npm install
+cd ..
+```
+
+## Running the application
+
+From the repository root, start the API and frontend together:
+
+```bash
+npm run dev
+```
+
+This starts:
+
+- The Express API at <http://localhost:3001>
+- The Vite development server at <http://localhost:5173>
+
+Open <http://localhost:5173> in a browser. The frontend proxies API requests to
+the backend, so both processes must be running. The backend health endpoint is
+available at <http://localhost:3001/api/health>.
+
+To run the processes separately, use two terminals:
+
+```bash
+# Terminal 1: API
+cd backend
+npm run dev
+```
+
+```bash
+# Terminal 2: frontend
+cd word-processor
+npm run dev
+```
+
+The frontend Vite server listens on all network interfaces. To access it from
+another device on the same network, use the host machine's IP address with port
+5173.
+
+## Environment variables
+
+The frontend can be configured with an optional
+[`word-processor/.env`](./word-processor/.env) file. Start with the example:
+
+```bash
+cp word-processor/.env.example word-processor/.env
+```
+
+Available variables:
+
+| Variable | Purpose | Default |
+| --- | --- | --- |
+| `VITE_API_BASE_URL` | Absolute base URL for API requests | Empty; uses the Vite proxy |
+| `VITE_COLLAB_SERVER_URL` | Optional Yoopta-compatible WebSocket server | Empty; realtime WebSocket transport disabled |
+
+The application currently uses the Express API for authentication, documents,
+comments, presence, and WordPress publishing. The optional collaboration
+WebSocket URL is only needed when a compatible realtime collaboration server is
+available.
+
+## Testing and validation
+
+Run the root Vitest suite:
+
+```bash
+npm test
+```
+
+Run the frontend lint, type-check/build, or production preview:
+
+```bash
+cd word-processor
+npm run lint
+npm run build
+npm run preview
+```
+
+The production preview is served by Vite after a successful build.
+
+## Project structure
+
+```text
+.
+├── backend/          Express API, authentication, documents, and local data
+├── tests/             Vitest tests for backend and application behavior
+└── word-processor/   React/TypeScript frontend and Vite configuration
+```
+
+Additional design and feature documentation is available in
+[`DOCUMENTATION.md`](./DOCUMENTATION.md), [`RESOURCES.md`](./RESOURCES.md), and
+the diagrams in the repository root.
+
+## Notes
+
+- Local JSON files contain application state and may change while the app runs.
+- Do not use the included JSON storage or development credentials for production.
+- WordPress publishing requires a WordPress site URL, username, and WordPress
+  Application Password.
+
+
 
