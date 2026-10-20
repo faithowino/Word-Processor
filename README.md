@@ -1,14 +1,12 @@
-# project2-group6
-Ray, Faith, Suryash, and George
+# Word-Processor
 
-## Pitch
 ### Overview
-
-
 This project delivers a collaborative, web-based writing environment tailored specifically for journalists and editors, streamlining the process of composing, sourcing, and publishing stories. The application supports two primary user roles: writers and editors. Writers can create and manage documents from their dashboard, while editors are invited collaborators with read-only access and commenting capabilities.
 
-The platform integrates a built-in research and citation system. Users can search or paste links directly into the sidebar, automatically generating editable citations categorized by source type (e.g., website, book, interview). An embedded browser allows in-app viewing of non-commercial sources, while commercial links open externally. Writers can organize sources, quotes, and media efficiently within each document.
+## My Contribution
+I integrated a built-in citation system and embedded browser. Users can search or paste links directly into the sidebar, automatically generating editable citations categorized by source type (e.g., website, book, interview). An embedded browser allows in-app viewing of non-commercial sources, while commercial links open externally. Writers can organize sources, quotes, and media efficiently within each document.
 
+## Team Contribution
 The rich text editor includes formatting tools, image insertion, commenting, and document sharing. A real-time collaboration panel displays active users, roles, and access modes. Only document owners can edit and publish content, with direct publishing supported via WordPress integration.
 
 Overall, the app centralizes writing, research, collaboration, and publishing into a single workflow, reducing friction for newsroom teams and enabling more organized, transparent, and efficient content production.
